@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Font declarations */
+  @font-face {
+    font-family: 'TitleFont';
+    src: url('/fonts/title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'ContentFont';
+    src: url('/fonts/content.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'ContentFont', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'TitleFont', serif;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-24 px-4 md:px-8 lg:px-12 w-full;
+  }
+
+  .section-white {
+    @apply bg-white text-black;
+  }
+
+  .section-black {
+    @apply bg-black text-white;
+  }
+
+  .title-large {
+    @apply text-4xl md:text-5xl lg:text-6xl font-normal mb-8 uppercase tracking-tight leading-tight;
+    font-family: 'TitleFont', serif;
+  }
+
+  .subtitle {
+    @apply text-lg md:text-xl font-normal mb-8 leading-relaxed;
+    font-family: 'ContentFont', sans-serif;
+    max-width: 65ch;
+  }
+
+  /* Specific Hero section styles */
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-normal uppercase tracking-tight leading-tight;
+    font-family: 'TitleFont', serif;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-subtitle {
+    @apply text-lg md:text-xl font-normal text-gray-800;
+    font-family: 'ContentFont', sans-serif;
+    line-height: 1.6;
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+  }
+
+  .section-number {
+    @apply text-sm tracking-wider mb-6;
+    font-family: 'ContentFont', sans-serif;
+  }
+
+  .nav-link {
+    @apply text-sm tracking-wider uppercase transition-colors;
+    font-family: 'ContentFont', sans-serif;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* Case studies section animations and enhancements */
+.case-study-block {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.case-study-block.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced link hover effect */
+.case-study-block a:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Subtle image hover effect */
+.case-study-block img {
+  transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.case-study-block img:hover {
+  transform: scale(1.02);
+}
+
+/* Typography enhancements */
+.case-study-block h3 {
+  letter-spacing: -0.02em;
+}
+
+.case-study-block p {
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
